@@ -1,0 +1,16 @@
+# Lista blanca: solo se versiona código. Los datos de la estación, los conjuntos de referencia
+# (se calculan de datos reales), los resultados y los informes NO se suben.
+*
+!.gitignore
+!README.md
+!requirements.txt
+!kori_agente/
+!kori_agente/*.py
+!kori_agente/fuentes.json
+!kori_agente/datos_prueba/
+!kori_agente/datos_prueba/generar_estacion_x.py
+!kori_agente/datos_prueba/estacion_x.csv
+!kori_interfaz/
+!kori_interfaz/librechat.yaml
+!kori_interfaz/docker-compose.override.yml
+!kori_interfaz/README.md

@@ -1,0 +1,26 @@
+{
+  "psha": {
+    "descripcion": "Estación PSHA (comunidad Shuar Arutam)",
+    "formato": "largo",
+    "archivo": "datos/Datos LIDI/node_register_n_psha01.csv",
+    "sep": ";",
+    "tiempo": "timestamp_node",
+    "variable": "sensor_id",
+    "valor": "sensor_value",
+    "diccionario": {
+      "archivo": "datos/Datos LIDI/sensors.csv",
+      "sep": ";",
+      "id": "sensor_id",
+      "significado": "sensor_name",
+      "unidad": "sensor_units",
+      "min": "sensor_minv",
+      "max": "sensor_maxv"
+    }
+  },
+  "estacion_x": {
+    "descripcion": "Estación X (dataset de prueba, sin diccionario de datos)",
+    "formato": "ancho",
+    "archivo": "kori_agente/datos_prueba/estacion_x.csv",
+    "sep": ","
+  }
+}

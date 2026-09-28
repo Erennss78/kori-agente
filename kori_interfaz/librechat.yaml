@@ -1,0 +1,34 @@
+# Configuración de LibreChat para Kori. Se monta en el contenedor desde docker-compose.override.yml.
+version: 1.3.17
+cache: true
+
+interface:
+  customWelcome: "Kori — pregunta sobre los datos de la estación. Las cifras las calcula el código; si una columna es dudosa, te preguntaré antes de usarla."
+
+endpoints:
+  # El servidor de Kori y Ollama corren en la laptop, fuera de Docker.
+  allowedAddresses:
+    - 'host.docker.internal:8765'
+    - 'host.docker.internal:11434'
+  custom:
+    # Agente Kori: plan con el LLM, cálculo con código, aclaración obligatoria (kori_agente/servidor_kori.py)
+    - name: 'Kori'
+      apiKey: 'local'
+      baseURL: 'http://host.docker.internal:8765/v1'
+      models:
+        default: ['qwen3:8b', 'qwen3.5:9b', 'qwen3:30b-a3b', 'nemotron-3.5-lightning:30b']
+        fetch: false  # solo modelos evaluados en el benchmark
+      titleConvo: false
+      modelDisplayLabel: 'Kori'
+      summarize: false
+      forcePrompt: false
+    # Modelos de Ollama sin el agente, para comparar respuestas "crudas"
+    - name: 'Ollama'
+      apiKey: 'ollama'
+      baseURL: 'http://host.docker.internal:11434/v1'
+      models:
+        default: ['qwen3:8b', 'qwen3.5:9b', 'qwen3:30b-a3b', 'nemotron-3.5-lightning:30b']
+        fetch: false  # solo modelos evaluados en el benchmark
+      titleConvo: true
+      titleModel: 'current_model'
+      modelDisplayLabel: 'Ollama'
